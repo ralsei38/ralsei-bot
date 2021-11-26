@@ -1,0 +1,8 @@
+version: "3"
+services:
+  ralsei-bot:
+    build: .
+    volumes:
+      - code:/root/code
+volumes:
+  code:
