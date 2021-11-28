@@ -15,6 +15,5 @@ client.once('ready', () => {
 	console.log('Ready!');
 });
 
-client.on('interactionCreate', async)
 // Logs the client in, establishing a WebSocket connection to Discord.
 client.login(token);
