@@ -2,3 +2,5 @@ token.txt
 .env
 config.json
 node_modules
+grade.json
+geckodriver.log
