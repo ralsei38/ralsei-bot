@@ -1,6 +1,6 @@
 # ralsei-bot
 <i>following discord.js official documentation.
-this repo packages:</i>
+this repo packages:</i> #jesaispasoujevais
 
 ## chamilo.py
 A program based on selenium used to scrap grades from Chamilo.<br/>
@@ -13,9 +13,6 @@ CHAMILO_PASSWORD=WriteYourPassHere
 ```
 
 ## ralsei-bot & it's dependencies
-foo<br>
-foo<br>
-foo<br/>
 
 <hr/>
 
