@@ -41,9 +41,3 @@ client.on('interactionCreate', async interaction => {
 ```text
 Intents are defined to express what kind of event your bot should listen to.
 ```
-
-### <u>Collections</u>
-```text
-A Map with additional utility methods. This is used throughout discord.js rather than Arrays for anything that has
-an ID, for significantly improved performance and ease-of-use.
-```
