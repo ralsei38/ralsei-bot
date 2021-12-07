@@ -11,3 +11,4 @@ A solution could be to:
 * create a user for this program
 * make the program store the credentials into a new file readable & writable only by himself ?
 So that if a restart is required, chamilo.py can grab credentials from the said file.
+The first time the program is run, credentials must be passed via CLI.
