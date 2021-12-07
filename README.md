@@ -5,12 +5,13 @@ this repo packages:</i>
 ## chamilo.py
 A program based on selenium used to scrap grades from Chamilo.<br/>
 The result is written in a file under the JSON format<br/>
-Logging in through the use of .env file, default conf below:
+Logging on Chamilo using creditentials stored in a .env file, default conf below:
 ```bash
 #create a '.env' file and write a conf like the one below inside it:
 CHAMILO_USERNAME=WriteYourUsernameHere
 CHAMILO_PASSWORD=WriteYourPassHere
 ```
+
 ## ralsei-bot & it's dependencies
 foo<br>
 foo<br>
