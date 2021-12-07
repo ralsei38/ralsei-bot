@@ -12,9 +12,6 @@ CHAMILO_USERNAME=WriteYourUsernameHere
 CHAMILO_PASSWORD=WriteYourPassHere
 ```
 ## ralsei-bot & it's dependencies
-foo<br>
-foo<br>
-foo<br/>
 
 <hr/>
 
