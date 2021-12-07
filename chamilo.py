@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-import os 
+import os
 import json
 
 load_dotenv()
@@ -22,11 +22,11 @@ password_txt = str(os.getenv('CHAMILO_PASSWORD'))
 #--- selenium setup
 firefox_options = webdriver.FirefoxOptions()
 #--- faking user-agent to avoid bot detection
-ua = UserAgent()
-fake_user_agent = ua.random
-firefox_options.add_argument(f"user-agent={fake_user_agent}")
+# ua = UserAgent()
+# fake_user_agent = ua.random
+# firefox_options.add_argument(f"user-agent={fake_user_agent}")
 firefox_options.add_argument("--log-level=3")
-firefox_options.add_argument("--headless")
+# firefox_options.add_argument("--headless")
 #--- urls
 chamilo_login_url = "https://cas-uga.grenet.fr/login"
 chamilo_grade_url = "https://scolarite-informatique.iut2.univ-grenoble-alpes.fr/app/ficheEtudiant.php"
