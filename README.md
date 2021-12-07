@@ -1,25 +1,19 @@
-# ralsei-bot
-<i>following discord.js official documentation.
-this repo packages:</i> #jesaispasoujevais
+<i>This repo packages:</i>
 
 ## chamilo.py
 A program based on selenium used to scrap grades from Chamilo.<br/>
 The result is written in a file under the JSON format<br/>
-Logging on Chamilo using creditentials stored in a .env file, default conf below:
+Logging on Chamilo using credentials stored in a .env file, default conf below:
 ```bash
 #create a '.env' file and write a conf like the one below inside it:
 CHAMILO_USERNAME=WriteYourUsernameHere
 CHAMILO_PASSWORD=WriteYourPassHere
 ```
-
-## ralsei-bot & it's dependencies
-
-<hr/>
+## ralsei-bot
+A simple discord bot alerting you when your grade changes. based on chamilo.py
 
 ## notions
 <i>A reminder about simple discord concepts</i>
-
-
 
 ### <u>Interactions</u>
 ```text
@@ -35,7 +29,11 @@ client.on('interactionCreate', async interaction => {
 });
 ```
 
+<hr/>
+
 ### <u>Intents</u>
 ```text
 Intents are defined to express what kind of event your bot should listen to.
 ```
+
+<hr/>
