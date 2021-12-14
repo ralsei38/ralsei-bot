@@ -5,13 +5,15 @@ from selenium.webdriver.firefox import service
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
-from fake_useragent import UserAgent
+# from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 import os
 import json
-
+from time import sleep
 load_dotenv()
+
+
 #--- const
 course = {
     # 'course_name': (coef,grade)
@@ -35,39 +37,46 @@ chamilo_grade_url = "https://scolarite-informatique.iut2.univ-grenoble-alpes.fr/
 #--- driver binary setup & driver implementation
 firefox_service = Service("/usr/local/bin/geckodriver")
 driver = webdriver.Firefox(service=firefox_service, options=firefox_options)
-#--- logging in
-driver.get(chamilo_login_url)
-username = driver.find_element(By.ID, 'username')
-password = driver.find_element(By.ID, 'password')
-submit = driver.find_element(By.NAME, 'submit')
-username.send_keys(username_txt)
-password.send_keys(password_txt)
-submit.click()
-#--- fetching grading page then parsing the page
-grading_page = driver.get(chamilo_grade_url)
-my_tasty_soup = BeautifulSoup(driver.page_source, "html.parser")
-tbody_tag = my_tasty_soup.find('table').find('tbody')
-rows = tbody_tag.find_all('tr')[3:]
 
-for row in rows:
-    course_name = (row.find('td').text.strip())
-    course[course_name] = (row.findAll('td')[-3].text.strip(), row.findAll('td')[-2].text.strip())
-    row = row.next_sibling
-    if row is None:
-        print("End Of Parse\n")
-        break
+def login(driver, username_txt, password_txt):
+    username = driver.find_element(By.ID, 'username')
+    password = driver.find_element(By.ID, 'password')
+    submit = driver.find_element(By.NAME, 'submit')
+    username.send_keys(username_txt)
+    password.send_keys(password_txt)
+    submit.click()
 
-must_update = 0
-with open('grade.json', 'r') as f:
-    previous_course_json = f.read()
-    if previous_course_json == json.dumps(course, indent=4, ensure_ascii=False).encode('utf8').decode():
-        print("up to date")
-        exit(0)
-    else:
-        print("updating")
-        must_update = 1
+while True:
+    #--- logging in
+    driver.get(chamilo_login_url)
+    if not 'se connecter' or 'SE CONNECTER' in driver.page_source:
+        login(driver, username_txt, password_txt)
+    #--- fetching grading page then parsing the page
+    grading_page = driver.get(chamilo_grade_url)
+    grading_page = driver.get(chamilo_grade_url)
+    my_tasty_soup = BeautifulSoup(driver.page_source, "html.parser")
+    tbody_tag = my_tasty_soup.find('table').find('tbody')
+    rows = tbody_tag.find_all('tr')[3:]
 
-if must_update:
-    with open('grade.json', 'w') as f:
-        current_course_json = json.dumps(course, indent=4, ensure_ascii=False).encode('utf8').decode()
-        f.write(current_course_json)
+    for row in rows:
+        course_name = (row.find('td').text.strip())
+        course[course_name] = (row.findAll('td')[-3].text.strip(), row.findAll('td')[-2].text.strip())
+        row = row.next_sibling
+        if row is None:
+            print("End Of Parse\n")
+            break
+
+    must_update = 0
+    with open('grade.json', 'r') as f:
+        previous_course_json = f.read()
+        if previous_course_json == json.dumps(course, indent=4, ensure_ascii=False).encode('utf8').decode():
+            print("up to date")
+        else:
+            print("updating")
+            must_update = 1
+
+    if must_update:
+        with open('grade.json', 'w') as f:
+            current_course_json = json.dumps(course, indent=4, ensure_ascii=False).encode('utf8').decode()
+            f.write(current_course_json)
+    sleep(60*15)
