@@ -1,3 +1,6 @@
+// to spawn the python fetching program
+const spawn = require("child_process").spawn;
+const gradeFetcher = spawn('python3', ['chamilo.py'])
 // READ THE DOC ! https://discord.js.org/#/docs/main/stable/general/welcome
 //importing discordjs lib, to interact with discord api, destructuring into theses vars
 const { Client, Intents, Collection, MessageEmbed } = require('discord.js');
