@@ -16,6 +16,7 @@ RUN pip3 install bs4
 RUN npm install -g npm@8.1.4
 RUN npm cache clean -f
 RUN npm install -g n
+RUN npm install discord.js
 RUN n stable
 
 WORKDIR /usr/local/bin
