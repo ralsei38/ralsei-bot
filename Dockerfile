@@ -16,7 +16,6 @@ RUN pip3 install bs4
 RUN npm install -g npm@8.1.4
 RUN npm cache clean -f
 RUN npm install -g n
-RUN npm install discord.js
 RUN n stable
 
 WORKDIR /usr/local/bin
@@ -42,4 +41,4 @@ RUN npm install -g @discordjs/builders @discordjs/rest discord-api-types
 WORKDIR /root/code
 
 # ENTRYPOINT [ "python3", "chamilo.py" ]
-ENTRYPOINT [ "tail", "-f", "index.js" ]
+ENTRYPOINT [ "tail", "-f", "/dev/null" ]
