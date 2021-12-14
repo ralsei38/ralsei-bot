@@ -1,6 +1,6 @@
 version: "3"
 services:
   ralsei-bot:
-    build: .
     volumes:
-      - ${PWD}/:/mnt/ralsei-bot
+      - $PWD/.:/mnt/ralsei-bot
+    build: .
