@@ -3,4 +3,4 @@ services:
   ralsei-bot:
     build: .
     volumes:
-      - .:/root/code
+      - ${PWD}/:/mnt/ralsei-bot

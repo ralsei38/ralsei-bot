@@ -38,7 +38,7 @@ RUN npm install -g dotenv
 RUN npm install -g @discordjs/builders @discordjs/rest discord-api-types
 
 #selenium dependencies
-WORKDIR /root/code
+WORKDIR /mnt/ralsei-bot
 
 # ENTRYPOINT [ "python3", "chamilo.py" ]
-ENTRYPOINT [ "node", "index.js" ]
+ENTRYPOINT [ "node","index.js" ]
