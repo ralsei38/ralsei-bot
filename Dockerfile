@@ -41,4 +41,4 @@ RUN npm install -g @discordjs/builders @discordjs/rest discord-api-types
 WORKDIR /root/code
 
 # ENTRYPOINT [ "python3", "chamilo.py" ]
-ENTRYPOINT [ "tail", "-f", "/dev/null" ]
+ENTRYPOINT [ "node", "index.js" ]
