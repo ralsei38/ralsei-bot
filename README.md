@@ -1,3 +1,5 @@
+# ralsei-bot
+Discord bot fetching student grades from chamilo
 <i>This repo packages:</i>
 
 ## chamilo.py
